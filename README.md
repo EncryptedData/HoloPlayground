@@ -1,2 +1,2 @@
 # HoloPlayground
-Playground for Hololens tools
+Playground for Hololens stuff
