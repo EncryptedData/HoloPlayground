@@ -1,9 +1,11 @@
 
-set(ENGINE_XR_SRC src/stub.cpp)
+set(ENGINE_XR_SRC
+        src/XrPlatform.cpp)
 
 add_library(engine_xr STATIC ${ENGINE_XR_SRC})
 
-target_link_libraries(engine_xr PRIVATE
+target_link_libraries(engine_xr PUBLIC
+        engine_core
         glm
         openxr_loader)
 
