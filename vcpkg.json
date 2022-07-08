@@ -1,0 +1,11 @@
+{
+  "name": "holoplayground",
+  "version": "1.0",
+  "dependencies": [ 
+	"glm",
+	"entt",
+	"openxr-loader",
+	"gamenetworkingsockets",
+	"sdl2"
+  ]
+}
