@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(HoloPlayground)
+project(holoplayground)
 
 # Normal Packages provided by the system
 find_package(Vulkan REQUIRED)
