@@ -1,0 +1,11 @@
+{
+  "name": "holoplayground",
+  "version": "1.0",
+  "dependencies": [ 
+    "vulkan",
+	"glm",
+	"entt",
+	"gamenetworkingsockets",
+	"sdl2"
+  ]
+}
