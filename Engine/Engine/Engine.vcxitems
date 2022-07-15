@@ -4,6 +4,7 @@
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{d78c7fdf-4a79-4467-9e63-29ffad49d3d3}</ItemsProjectGuid>
+    <ItemsProjectName>Engine</ItemsProjectName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -14,7 +15,10 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Platform.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Core.DeltaTime.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Core.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Core.Platform.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XR.ixx" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XR.Platform.ixx" />
   </ItemGroup>
 </Project>

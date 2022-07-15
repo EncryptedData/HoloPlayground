@@ -1,5 +1,5 @@
 
-export module Engine.Core.Platform;
+export module Engine.Core:Platform;
 
 namespace Engine::Core
 {
