@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Core.ixx">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Core.Platform.ixx">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)XR.ixx">
+      <Filter>XR</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)XR.Platform.ixx">
+      <Filter>XR</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Core.DeltaTime.ixx">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{d8de8040-1182-4ec4-83b8-ded8815aa7bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XR">
+      <UniqueIdentifier>{df8d1679-56e2-473e-9990-eb15f77111e6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

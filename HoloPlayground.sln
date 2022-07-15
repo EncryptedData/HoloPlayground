@@ -9,13 +9,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesktopVR", "Targets\Deskto
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{D848DD25-33FC-464E-8797-52E3AF487B61}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Engine\Core\Core.vcxitems", "{D78C7FDF-4A79-4467-9E63-29FFAD49D3D3}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vulkan", "Engine\Vulkan\Vulkan.vcxitems", "{4329BED4-E481-48D2-8BE2-2AA008B83342}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dx11", "Engine\Dx11\Dx11.vcxitems", "{EC87B9C9-250A-4468-A89F-A8AF5E14D770}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hololens2", "Targets\Hololens2\Hololens2.vcxproj", "{A6A356A7-BEAC-488E-8C83-2316220EAD69}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine\Engine.vcxitems", "{D78C7FDF-4A79-4467-9E63-29FFAD49D3D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,21 +51,20 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{64D153E4-4D75-4B6E-926D-053ED7A64D1A} = {CB684D2B-AD81-4E92-BF13-A1C15BD0875D}
-		{D78C7FDF-4A79-4467-9E63-29FFAD49D3D3} = {D848DD25-33FC-464E-8797-52E3AF487B61}
 		{4329BED4-E481-48D2-8BE2-2AA008B83342} = {D848DD25-33FC-464E-8797-52E3AF487B61}
 		{EC87B9C9-250A-4468-A89F-A8AF5E14D770} = {D848DD25-33FC-464E-8797-52E3AF487B61}
 		{A6A356A7-BEAC-488E-8C83-2316220EAD69} = {CB684D2B-AD81-4E92-BF13-A1C15BD0875D}
+		{D78C7FDF-4A79-4467-9E63-29FFAD49D3D3} = {D848DD25-33FC-464E-8797-52E3AF487B61}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87DBE3FF-A105-4273-9AD5-1AC70016CC4E}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Engine\Vulkan\Vulkan.vcxitems*{4329bed4-e481-48d2-8be2-2aa008b83342}*SharedItemsImports = 9
-		Engine\Core\Core.vcxitems*{64d153e4-4d75-4b6e-926d-053ed7a64d1a}*SharedItemsImports = 4
+		Engine\Engine\Engine.vcxitems*{64d153e4-4d75-4b6e-926d-053ed7a64d1a}*SharedItemsImports = 4
 		Engine\Vulkan\Vulkan.vcxitems*{64d153e4-4d75-4b6e-926d-053ed7a64d1a}*SharedItemsImports = 4
-		Engine\Core\Core.vcxitems*{a6a356a7-beac-488e-8c83-2316220ead69}*SharedItemsImports = 4
 		Engine\Dx11\Dx11.vcxitems*{a6a356a7-beac-488e-8c83-2316220ead69}*SharedItemsImports = 4
-		Engine\Core\Core.vcxitems*{d78c7fdf-4a79-4467-9e63-29ffad49d3d3}*SharedItemsImports = 9
+		Engine\Engine\Engine.vcxitems*{d78c7fdf-4a79-4467-9e63-29ffad49d3d3}*SharedItemsImports = 9
 		Engine\Dx11\Dx11.vcxitems*{ec87b9c9-250a-4468-a89f-a8af5e14d770}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

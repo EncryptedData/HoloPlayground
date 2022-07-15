@@ -21,14 +21,14 @@ module;
 #include <openxr/openxr.h>
 #include <openxr/openxr_platform.h>
 
-export module Engine.XR;
+export module Engine.XR.Platform;
 
 import <cstdint>;
 import <vector>;
 import <cstring>;
 import <algorithm>;
 
-import Engine.Core.Platform;
+import Engine.Core;
 
 namespace Engine::XR
 {
