@@ -1,54 +1,41 @@
 
 module;
 
-#ifdef _WIN32
-#define XR_USE_PLATFORM_WIN32
-#define XR_USE_GRAPHICS_API_D3D11
-#define GRAPHICS_DX11
-#endif
+#include "engine_openxr.h"
 
-#ifdef GRAPHICS_DX11
-#define XR_USE_GRAPHICS_API_D3D11
-#include <d3d11.h>
-#include <DirectXMath.h>
-#endif
-
-#ifdef GRAPHICS_VULKAN
-#define XR_USE_GRAPHICS_API_VULKAN
-// James include vulkan header here as well
-#endif
-
-#include <openxr/openxr.h>
-#include <openxr/openxr_platform.h>
-
-export module Engine.XR.Platform;
-
+export module Engine.XR.Service;
 import <cstdint>;
 import <vector>;
 import <cstring>;
 import <algorithm>;
 
-import Engine.Core;
-
 namespace Engine::XR
 {
 	export using ExtensionList = std::vector<const char*>;
 
-	export class OpenXrPlatform : 
-		public Core::IPlatform
+	export class OpenXrService
 	{
 	public:
 
-		explicit OpenXrPlatform();
+		~OpenXrService() = default;
+
+		explicit OpenXrService();
 
 		bool Initialize(const ExtensionList& wanted_extensions);
-
-		bool Update() override;
 
 	private:
 
 		XrInstance _instance;
+		XrSession _session;
+		XrSessionState _sessionState;
+		XrSpace _space;
+		XrSystemId _systemId;
+		XrEnvironmentBlendMode _blendMode;
 		XrDebugUtilsMessengerEXT _debugMessenger;
+
+		std::vector<XrView> _views;
+		std::vector<XrViewConfigurationView> _configViews;
+		
 		bool _debugMessengerEnabled;
 
 		/// <summary>
@@ -71,7 +58,9 @@ namespace Engine::XR
 		/// <param name="wantedExtensions">The extensions to query</param>
 		void EnableDebugExtensionsIfDefined(const ExtensionList& wantedExtensions);
 
-		//void QuerySystemInfo();
+		bool QuerySystemInfo();
+
+		bool QueryEnvironmentBlendModes();
 	};
 
 	
@@ -82,14 +71,17 @@ module :private;
 
 namespace Engine::XR
 {
-	OpenXrPlatform::OpenXrPlatform() :
+	const XrFormFactor AppConfigForm = XR_FORM_FACTOR_HEAD_MOUNTED_DISPLAY;
+	const XrViewConfigurationType AppConfigView = XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO;
+
+	OpenXrService::OpenXrService() :
 		_instance{nullptr},
 		_debugMessenger{},
 		_debugMessengerEnabled{false}
 	{
 	}
 
-	bool OpenXrPlatform::Initialize(const ExtensionList& wanted_extensions)
+	bool OpenXrService::Initialize(const ExtensionList& wanted_extensions)
 	{
 		if (!CheckExtensionsAreAvailable(wanted_extensions))
 			return false;
@@ -99,15 +91,13 @@ namespace Engine::XR
 
 		EnableDebugExtensionsIfDefined(wanted_extensions);
 
+		if (!QuerySystemInfo())
+			return false;
+
 		return true;
 	}
 
-	bool OpenXrPlatform::Update()
-	{
-		return false;
-	}
-
-	bool OpenXrPlatform::CheckExtensionsAreAvailable(const ExtensionList& wanted_extensions)
+	bool OpenXrService::CheckExtensionsAreAvailable(const ExtensionList& wanted_extensions)
 	{
 		std::uint32_t platformExtensionCount = 0;
 		xrEnumerateInstanceExtensionProperties(nullptr, 0, &platformExtensionCount, nullptr);
@@ -136,7 +126,7 @@ namespace Engine::XR
 		return true;
 	}
 
-	bool OpenXrPlatform::CreateXrInstance(const ExtensionList& extensions)
+	bool OpenXrService::CreateXrInstance(const ExtensionList& extensions)
 	{
 		const char* HOLOPLAYGROUND_STR = "HoloPlayground";
 
@@ -158,7 +148,7 @@ namespace Engine::XR
 		return true;
 	}
 
-	void OpenXrPlatform::EnableDebugExtensionsIfDefined(const ExtensionList& wantedExtensions)
+	void OpenXrService::EnableDebugExtensionsIfDefined(const ExtensionList& wantedExtensions)
 	{
 		// Is the debug extension wanted?
 		auto iter = std::find(wantedExtensions.begin(), wantedExtensions.end(), XR_EXT_DEBUG_UTILS_EXTENSION_NAME);
@@ -180,7 +170,7 @@ namespace Engine::XR
 			XR_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT |
 			XR_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT;
 
-		debugInfo.userCallback = [](XrDebugUtilsMessageSeverityFlagsEXT severity, XrDebugUtilsMessageTypeFlagsEXT types, const XrDebugUtilsMessengerCallbackDataEXT* msg, void* userData)
+		debugInfo.userCallback = [](XrDebugUtilsMessageSeverityFlagsEXT /*severity*/, XrDebugUtilsMessageTypeFlagsEXT /*types*/, const XrDebugUtilsMessengerCallbackDataEXT* msg, void* /*userData*/)
 		{
 			printf("%s: %s\n", msg->functionName, msg->message);
 
@@ -201,6 +191,23 @@ namespace Engine::XR
 		{
 			_debugMessengerEnabled = true;
 		}
+	}
+
+	bool OpenXrService::QuerySystemInfo()
+	{
+		XrSystemGetInfo systemInfo = { XR_TYPE_SYSTEM_GET_INFO };
+		systemInfo.formFactor = XR_FORM_FACTOR_HEAD_MOUNTED_DISPLAY;
+		XrResult result = xrGetSystem(_instance, &systemInfo, &_systemId);
+		return result == XrResult::XR_SUCCESS;
+	}
+
+	bool OpenXrService::QueryEnvironmentBlendModes()
+	{
+		
+		std::uint32_t blendCount = 0;
+		XrResult result = xrEnumerateEnvironmentBlendModes(_instance, _systemId, AppConfigView, 1, &blendCount, &_blendMode);
+
+		return result == XrResult::XR_SUCCESS;
 	}
 }
 

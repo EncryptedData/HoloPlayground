@@ -1,8 +1,8 @@
-export module Engine.Core:DeltaTime;
+export module Engine.Core.DeltaTime;
 
 namespace Engine::Core
 {
-	class DeltaTime
+	export class DeltaTime
 	{
 	public:
 		explicit DeltaTime(float dt, float fixedDt, float dtMod = 1.0f) :

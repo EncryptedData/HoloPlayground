@@ -2,7 +2,7 @@
   "name": "holoplayground",
   "version": "1.0",
   "dependencies": [ 
-	"glm",
-	"entt"
+	  "glm",
+	  "entt"
   ]
 }
