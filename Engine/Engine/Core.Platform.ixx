@@ -1,5 +1,5 @@
 
-export module Engine.Core:Platform;
+export module Engine.Core.Platform;
 
 namespace Engine::Core
 {
@@ -9,7 +9,9 @@ namespace Engine::Core
 
 		virtual ~IPlatform() = default;
 
-		virtual bool Update() = 0;
+		virtual void Update() = 0;
+
+		virtual bool ShouldContinue() = 0;
 	};
 }
 

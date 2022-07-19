@@ -16,9 +16,33 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Core.DeltaTime.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Core.FrameTimer.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Core.GameEngine.ixx" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Core.ixx" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Core.Platform.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Math.Camera.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Math.Transform.ixx">
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4201</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4201</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4201</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4201</DisableSpecificWarnings>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Space.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems.IEngineSystem.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems.ixx" />
     <ClCompile Include="$(MSBuildThisFileDirectory)XR.ixx" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)XR.Platform.ixx" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)XR.Service.ixx">
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4005;5105;5106;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4005;5105;5106;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4005;5105;5106;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4005;5105;5106;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">4005;5105;5106;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">4005;5105;5106;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">4005;5105;5106;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">4005;5105;5106;4996</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)engine_openxr.h" />
   </ItemGroup>
 </Project>

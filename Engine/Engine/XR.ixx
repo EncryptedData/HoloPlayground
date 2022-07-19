@@ -1,4 +1,4 @@
 
 export module Engine.XR;
 
-export import Engine.XR.Platform;
+export import Engine.XR.Service;

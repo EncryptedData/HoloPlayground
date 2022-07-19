@@ -10,11 +10,32 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)XR.ixx">
       <Filter>XR</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)XR.Platform.ixx">
+    <ClCompile Include="$(MSBuildThisFileDirectory)XR.Service.ixx">
       <Filter>XR</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Core.DeltaTime.ixx">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Core.GameEngine.ixx">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Core.FrameTimer.ixx">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems.ixx">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Systems.IEngineSystem.ixx">
+      <Filter>Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Space.ixx">
+      <Filter>Space</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Math.Transform.ixx">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Math.Camera.ixx">
+      <Filter>Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -24,5 +45,19 @@
     <Filter Include="XR">
       <UniqueIdentifier>{df8d1679-56e2-473e-9990-eb15f77111e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Systems">
+      <UniqueIdentifier>{93e5da79-c6c3-4063-9d21-21f6106e16df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Space">
+      <UniqueIdentifier>{f1300410-bb59-4a6c-ad21-063cda407005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{016ed795-e48f-4556-831e-0d53da178e43}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)engine_openxr.h">
+      <Filter>XR</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
